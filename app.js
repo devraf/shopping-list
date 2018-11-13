@@ -205,14 +205,14 @@ var shop = {
   },
   //add high priority button to each item
   //add completed button to each item
-  //add QTY to each item
+  //add change QTY button to each item
   //give user chance to set QTY before adding item to the List
   //give user chance to set item as high priority before adding item to list
   //give user option to show/hide QTY
   //show/hide add new item input
   //give user a chance to cancel adding new item to List
   //remove all completed items from the list
-  
+
   deleteLiElements: function() {
     var ulNode = document.querySelector('.itemList');
   }
