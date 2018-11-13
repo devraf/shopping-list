@@ -1,0 +1,26 @@
+.container {
+  font-family: sans-serif;
+  font-size: 0.85rem;
+  display: grid;
+  grid-template-columns: 2;
+}
+
+h1 {
+  font-size: 1rem;
+  margin: 5px;
+}
+
+.box {
+  border: solid .5px #000000;
+  margin: 10px;
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+
+.box a {
+  display: block;
+  margin: 0 0 10px 10px;
+  color: #000000;
+
+}
