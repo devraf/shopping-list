@@ -188,6 +188,7 @@ var shop = {
       var deleteButton = document.createElement('button');
       deleteButton.innerText = 'Delete'
       ulNode.children[i].appendChild(deleteButton)
+      console.log('deleteButton added');
     }
 
   },
