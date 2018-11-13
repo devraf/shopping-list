@@ -133,7 +133,8 @@
 
 var shop = {
   init: function() {
-    this.addItemInput();
+    this.saveItemToList();
+    this.deleteLiNode();
   },
   shoppingItemList: [],
   addItemToList: function(item) {
@@ -156,14 +157,16 @@ var shop = {
     this.shoppingItemList[position].completed = !this.shoppingItemList[position].completed;
   },
   //UI Layout
-  addItemInput: function() {
+  //Adds item name and delete button to a newly created li
+  //Updates all current li's classList
+  saveItemToList: function() {
     var itemInput = document.querySelector('.itemInput');
     var saveItem = document.querySelector('.saveItemButton');
 
     saveItem.addEventListener('click', function() {
       shop.addItemToList(itemInput.value);
       shop.createLiElements();
-      shop.addInputValueToLiNodes();
+      shop.addItemNameToLiNodes();
       shop.addDeleteButtonsToLiNodes();
     });
   },
@@ -173,33 +176,36 @@ var shop = {
 
     ulNode.appendChild(li);
   },
-  addInputValueToLiNodes: function () {
+  addItemNameToLiNodes: function() {
     var ulNode = document.querySelector('.itemList');
 
-    for(var i = 0; i < shop.shoppingItemList.length; i++) {
+    for (var i = 0; i < shop.shoppingItemList.length; i++) {
       ulNode.children[i].innerText = shop.shoppingItemList[i].label;
     };
   },
-  addDeleteButtonsToLiNodes: function () {
+  addDeleteButtonsToLiNodes: function() {
     var ulNode = document.querySelector('.itemList');
-    // var deleteButton = document.createElement('button');
 
     for (var i = 0; i < shop.shoppingItemList.length; i++) {
       var deleteButton = document.createElement('button');
       deleteButton.innerText = 'Delete'
-      ulNode.children[i].appendChild(deleteButton)
-      console.log('deleteButton added')
+      ulNode.children[i].classList.add(i.toString());
+      ulNode.children[i].appendChild(deleteButton);
     }
+  },
+  deleteLiNode: function() {
+    var ulNode = document.querySelector('.itemList');
+    var deleteButton = document.querySelector('button');
 
+    ulNode.addEventListener('click', function(event) {
+      var selectedItemToDelete = event.target.parentNode.classList;
+      event.target.parentNode.remove();
+      shop.removeItemFromList(parseInt(selectedItemToDelete));
+    });
   },
   deleteLiElements: function() {
     var ulNode = document.querySelector('.itemList');
-    for (var i = 0; i < shop.shoppingItemList.length; i++) {
-      var liNode = document.querySelector('li')
-      liNode.remove();
-    }
   }
-
 }
 
 shop.init();
