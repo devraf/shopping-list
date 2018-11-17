@@ -134,7 +134,7 @@
 var shop = {
   init: function() {
     this.saveItemToList();
-    this.deleteLiNode();
+    this.removeLiNode();
   },
   shoppingItemList: [],
   addItemToList: function(item) {
@@ -168,6 +168,8 @@ var shop = {
       shop.createLiElements();
       shop.addItemNameToLiNodes();
       shop.addDeleteButtonsToLiNodes();
+      shop.addHighPriorityButtonToLiNodes();
+      shop.addClassToLiNodes();
     });
   },
   createLiElements: function() {
@@ -188,20 +190,46 @@ var shop = {
 
     for (var i = 0; i < shop.shoppingItemList.length; i++) {
       var deleteButton = document.createElement('button');
-      deleteButton.innerText = 'Delete'
-      ulNode.children[i].classList.add(i.toString());
+      deleteButton.innerText = 'X'
+      deleteButton.classList.add('delete');
       ulNode.children[i].appendChild(deleteButton);
     }
   },
-  deleteLiNode: function() {
+  addClassToLiNodes: function() {
     var ulNode = document.querySelector('.itemList');
-    var deleteButton = document.querySelector('button');
 
-    ulNode.addEventListener('click', function(event) {
-      var selectedItemToDelete = event.target.parentNode.classList;
-      event.target.parentNode.remove();
-      shop.removeItemFromList(parseInt(selectedItemToDelete));
-    });
+    for(var i = 0; i < ulNode.children.length; i++ ) {
+      ulNode.children[i].classList.add(i.toString());
+    }
+  },
+  removeLiNode: function () {
+    var ulNode = document.querySelector('.itemList');
+
+    ulNode.addEventListener('click', function (event) {
+      liNodeClass = event.target.parentNode.classList.toString();
+      // selectedLi = document.getElementsByClassName(liNodeClass);
+      // console.log(selectedLi);
+      if(event.target.className === 'delete'){
+        event.target.parentNode.remove();
+        shop.removeItemFromList(liNodeClass);
+      }
+    })
+  },
+
+  //update class list of each li
+  //only run this when an li is deleted
+    //remove class List for each li
+    //add class list for each li
+  addHighPriorityButtonToLiNodes: function () {
+    var ulNode = document.querySelector('.itemList');
+    var makeImportant = document.createElement('button');
+
+    for (var i = 0; i < shop.shoppingItemList.length; i++) {
+      var makeImportantButton = document.createElement('button');
+      makeImportantButton.innerText = '!';
+      makeImportantButton.classList.add('important');
+      ulNode.children[i].appendChild(makeImportantButton);
+    };
   },
   //add high priority button to each item
   //add completed button to each item
