@@ -198,7 +198,7 @@ var shop = {
   addClassToLiNodes: function() {
     var ulNode = document.querySelector('.itemList');
 
-    for(var i = 0; i < ulNode.children.length; i++ ) {
+    for(var i = 0; i < shop.shoppingItemList.length; i++ ) {
       ulNode.children[i].classList.add(i.toString());
     }
   },
@@ -207,19 +207,31 @@ var shop = {
 
     ulNode.addEventListener('click', function (event) {
       liNodeClass = event.target.parentNode.classList.toString();
-      // selectedLi = document.getElementsByClassName(liNodeClass);
-      // console.log(selectedLi);
+
       if(event.target.className === 'delete'){
         event.target.parentNode.remove();
         shop.removeItemFromList(liNodeClass);
-      }
+        shop.removeAllLiNodes();
+        for (var i = 0; i < shop.shoppingItemList.length; i++) {
+          shop.createLiElements();
+        };
+        shop.addItemNameToLiNodes();
+        shop.addDeleteButtonsToLiNodes();
+        shop.addClassToLiNodes();
+        shop.addHighPriorityButtonToLiNodes();
+      };
     })
   },
+    removeAllLiNodes: function () {
+      var ulNode = document.querySelector('.itemList');
 
-  //update class list of each li
-  //only run this when an li is deleted
-    //remove class List for each li
-    //add class list for each li
+      for(var i = 0; i < shop.shoppingItemList.length; i++){
+        var liNode = document.querySelector('li')
+        //debugger;
+        ulNode.removeChild(liNode);
+      }
+    },
+
   addHighPriorityButtonToLiNodes: function () {
     var ulNode = document.querySelector('.itemList');
     var makeImportant = document.createElement('button');
