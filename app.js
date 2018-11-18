@@ -151,10 +151,10 @@ var shop = {
     this.shoppingItemList.splice(position, 1);
   },
   makeItemHighPriority: function(position) {
-    this.shoppingItemList[position].highPriority = !this.shoppingItemList[position].highPriority;
+    shop.shoppingItemList[position].highPriority = !shop.shoppingItemList[position].highPriority;
   },
   completedShoppingItem: function(position) {
-    this.shoppingItemList[position].completed = !this.shoppingItemList[position].completed;
+    shop.shoppingItemList[position].completed = !shop.shoppingItemList[position].completed;
   },
   //UI Layout
   //Adds item name and delete button to a newly created li
@@ -198,17 +198,17 @@ var shop = {
   addClassToLiNodes: function() {
     var ulNode = document.querySelector('.itemList');
 
-    for(var i = 0; i < shop.shoppingItemList.length; i++ ) {
+    for (var i = 0; i < shop.shoppingItemList.length; i++) {
       ulNode.children[i].classList.add(i.toString());
     }
   },
-  removeLiNode: function () {
+  removeLiNode: function() {
     var ulNode = document.querySelector('.itemList');
 
-    ulNode.addEventListener('click', function (event) {
+    ulNode.addEventListener('click', function(event) {
       liNodeClass = event.target.parentNode.classList.toString();
 
-      if(event.target.className === 'delete'){
+      if (event.target.className === 'delete') {
         event.target.parentNode.remove();
         shop.removeItemFromList(liNodeClass);
         shop.removeAllLiNodes();
@@ -222,17 +222,17 @@ var shop = {
       };
     })
   },
-    removeAllLiNodes: function () {
-      var ulNode = document.querySelector('.itemList');
+  removeAllLiNodes: function() {
+    var ulNode = document.querySelector('.itemList');
 
-      for(var i = 0; i < shop.shoppingItemList.length; i++){
-        var liNode = document.querySelector('li')
-        //debugger;
-        ulNode.removeChild(liNode);
-      }
-    },
+    for (var i = 0; i < shop.shoppingItemList.length; i++) {
+      var liNode = document.querySelector('li')
+      //debugger;
+      ulNode.removeChild(liNode);
+    }
+  },
 
-  addHighPriorityButtonToLiNodes: function () {
+  addHighPriorityButtonToLiNodes: function() {
     var ulNode = document.querySelector('.itemList');
     var makeImportant = document.createElement('button');
 
@@ -243,7 +243,6 @@ var shop = {
       ulNode.children[i].appendChild(makeImportantButton);
     };
   },
-  //add high priority button to each item
   //add completed button to each item
   //add change QTY button to each item
   //give user chance to set QTY before adding item to the List
@@ -253,8 +252,24 @@ var shop = {
   //give user a chance to cancel adding new item to List
   //remove all completed items from the list
 
-  deleteLiElements: function() {
+  makeItemLiHighPriority: function() {
     var ulNode = document.querySelector('.itemList');
+
+    ulNode.addEventListener('click', function (event) {
+      var targetLiNode = event.target.parentNode.classList
+      shop.makeItemHighPriority(targetLiNode);
+    } );
+  },
+  highPriorityClassAddRemove: function () {
+    var ulNode = document.querySelector('.itemList');
+
+    ulNode.addEventListener('click', function (event) {
+      for (var i = 0; i < shop.shoppingItemList.length; i++) {
+        if(shop.shoppingItemList[i].highPriority) {
+          event.target.parentNode.classList.add('important')
+        } else event.target.parentNode.classList.remove('important');
+      }
+    })
   }
 }
 
