@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shoppie</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div id="app" class="container">
+    <h1> {{ header }} </h1>
+    <div class="addItemQty">
+      <div class="row">
+        <div class="col s8">
+          <input v-model="newItem" v-on:keyup.enter="saveItem" type="text" name="" placeholder="Add an Item">
+        </div>
+        <div class=" col s4">
+          <input v-model="qty" type="text" name="" placeholder="Qty">
+        </div>
+      </div>
+      <a class="btn-small" v-on:click="saveItem">+</a>
+    </div>
+    <div class="list">
+      <ul>
+        <li v-for="item in items">{{ item }} {{ qty }}</li>
+      </ul>
+    </div>
+  </div>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="shop.js"></script>
+</body>
+
+</html>
