@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HR Cal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div id="app" class="container">
+    <h3> {{ header }} </h3>
+    <p>Find your target heart rate target zones</p>
+    <form class="">
+      <div class="input-field">
+        <input type="number" id="age" class="validate">
+        <label for="age">Age</label>
+      </div>
+      <div class="input-field">
+        <input type="number" id="restingHeartRate" class="validate">
+        <label for="restingHeartRate">Resting Heart Rate</label>
+        <a href="#">How do I find my resting heart rate?</a>
+      </div>
+    </form>
+    <div class="results">
+      <div class="title">
+        Your Heart Rate Target Zones
+      </div>
+
+      <div class="moderate">
+        Moderate
+      </div>
+      <div class="vigeros">
+        Vigerous
+      </div>
+
+      <div class="percentScale">
+        <div class="percent">
+          50%
+        </div>
+        <div class="percent">
+          60%
+        </div>
+        <div class="percent">
+          70%
+        </div>
+        <div class="percent">
+          80%
+        </div>
+        <div class="percent">
+          85%
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
