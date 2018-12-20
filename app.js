@@ -152,6 +152,7 @@ var shop = {
   },
   makeItemHighPriority: function(position) {
     shop.shoppingItemList[position].highPriority = !shop.shoppingItemList[position].highPriority;
+    console.log(shop.shoppingItemList[position].highPriority)
   },
   completedShoppingItem: function(position) {
     shop.shoppingItemList[position].completed = !shop.shoppingItemList[position].completed;
