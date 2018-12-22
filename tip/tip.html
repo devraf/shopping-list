@@ -28,11 +28,26 @@
     </div>
 
     <div class="row">
+      <div class="col s2">
+        <h2>%</h2>
+      </div>
+      <div class="col s2">
+        <h2>Tip</h2>
+      </div>
+      <div class="col s2">
+        <h2>Total</h2>
+      </div>
+    </div>
+
+    <div class="row">
       <div class="percent col s2">
         10%
       </div>
       <div class="amount col s2">
-        <span v-if="notZero">$</span>{{ tipRange[0] }}
+        <span v-if="notZero">${{ tipRange[0] }}</span>
+      </div>
+      <div class="col s2">
+        <span v-if="notZero">${{ totalPlusTip[0] }}</span>
       </div>
     </div>
 
@@ -41,7 +56,10 @@
         15%
       </div>
       <div class="amount col s2">
-        <span v-if="notZero">$</span>{{ tipRange[1] }}
+        <span v-if="notZero">${{ tipRange[1] }}</span>
+      </div>
+      <div class="col s2">
+        <span v-if="notZero">${{ totalPlusTip[1] }}</span>
       </div>
     </div>
 
@@ -50,7 +68,10 @@
         20%
       </div>
       <div class="amount col s2">
-        <span v-if="notZero">$</span>{{ tipRange[2] }}
+        <span v-if="notZero">${{ tipRange[2] }}</span>
+      </div>
+      <div class="col s2">
+        <span v-if="notZero">${{ totalPlusTip[2] }}</span>
       </div>
     </div>
 
@@ -59,7 +80,10 @@
         25%
       </div>
       <div class="amount col s2">
-        <span v-if="notZero">$</span>{{ tipRange[3] }}
+        <span v-if="notZero">${{ tipRange[3] }}</span>
+      </div>
+      <div class="col s2">
+        <span v-if="notZero">${{ totalPlusTip[3] }}</span>
       </div>
     </div>
   </div>
