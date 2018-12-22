@@ -4,24 +4,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>HR Cal</title>
+  <title>Tipper</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
   <div id="app" class="container">
-    <p>Name: {{ name }}</p>
-    <p>Age: {{ age }}</p>
-    <p>My age * 3 = {{age * 3}}</p>
-    <p>My random number is {{ random() }}</p>
-    <img v-bind:src="image" alt="My image via Vue">
-    <input v-bind:value="name" type="text" name="">
-
-    <button v-on:click="alert" type="button" name="button">Alert</button>
-
-    <input v-on:keydown.enter="updateKeyValue" type="text" name="" value="">
-    <p>{{ value }}</p>
+    <h1> {{ header }} </h1>
+    <div class="row">
+      <div class="col s6 input-field">
+        <input v-model.number="total" type="number" name="totalAmount" value="">
+        <label for="totalAmount">Total</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        Total: <span v-if="notZero">$</span>{{ total }}
+      </div>
+    </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
