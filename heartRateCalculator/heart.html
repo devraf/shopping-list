@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>HR Cal</title>
+  <title>Target Zone Heart Rate Calculator</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -15,11 +15,11 @@
     <form class="">
       <div class="row">
         <div class="input-field col s6">
-          <input v-model.number="age" v-on:keydown="heartRateScaleFiftyToEightyFive" type="number" id="age" class="validate">
+          <input v-model.number="age" type="number" id="age" class="validate">
           <label for="age">Age</label>
         </div>
         <div class="input-field col s6">
-          <input v-model.number="currentRestingHeartRate" v-on:keydown="heartRateScaleFiftyToEightyFive" type="number" id="restingHeartRate" class="validate">
+          <input v-model.number="restingHeartRate" type="number" id="restingHeartRate" class="validate">
           <label for="restingHeartRate">Resting Heart Rate</label>
         </div>
         <div class="row">
@@ -35,73 +35,28 @@
           Intensity Scale
         </div>
       </div>
+
       <div class="row percentScale">
-        <div class="col s1 percent">
-          Resting
-        </div>
-        <div class="col s1 percent">
-          50%
-        </div>
-        <div class="col s1 percent">
-          55%
-        </div>
-        <div class="col s1 percent">
-          60%
-        </div>
-        <div class="col s1 percent">
-          65%
-        </div>
-        <div class="col s1 percent">
-          70%
-        </div>
-        <div class="col s1 percent">
-          75%
-        </div>
-        <div class="col s1 percent">
-          80%
-        </div>
-        <div class="col s1 percent">
-          85%
-        </div>
-        <div class="col s1 percent">
-          Maximum
-        </div>
+        <template v-for="scale in percentScale">
+          <div class=" col s2 percent">
+            {{ scale }}
+          </div>
+        </template>
       </div>
 
       <div class="row results">
-        <div class="col s1 percent">
-           {{ currentRestingHeartRate }}
-        </div>
-        <div class="col s1 percent">
-          {{ heartRateScale[0] }}
-        </div>
-        <div class="col s1 percent">
-          {{ heartRateScale[1] }}
-        </div>
-        <div class="col s1 percent">
-          {{ heartRateScale[2] }}
-        </div>
-        <div class="col s1 percent">
-          {{ heartRateScale[3] }}
-        </div>
-        <div class="col s1 percent">
-          {{ heartRateScale[4] }}
-        </div>
-        <div class="col s1 percent">
-          {{ heartRateScale[5] }}
-        </div>
-        <div class="col s1 percent">
-          {{ heartRateScale[6] }}
-        </div>
-        <div class="col s1 percent">
-          {{ heartRateScale[7] }}
-        </div>
-        <div class="col s1 percent">
-           {{ maximumHeartRateCalculation }}
+        <template v-for="percent in updatedHeartRateScale">
+          <div class=" col s2 percent">
+            {{ percent.toFixed() }}
+          </div>
+        </template>
+        <div class="col s2 percent">
+          {{ updatedMaxHeartRate }}
         </div>
       </div>
-
     </div>
+
+  </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>

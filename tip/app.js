@@ -1,7 +1,7 @@
 var app = new Vue({
   el: '#app',
   data: {
-    header: 'Tipper',
+    header: 'Quicker Tipper',
     total: '',
     notZero: false,
     tipRange: [],

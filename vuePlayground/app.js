@@ -5,8 +5,6 @@ var app = new Vue({
     age: 28,
     image: 'http://clker.com/cliparts/3/m/v/Y/E/V/small-red-apple-md.png',
     value: '',
-    currentHeartMaximumRate: '',
-    currentHeartRateReserve: ''
   },
   methods: {
     random: function () {
