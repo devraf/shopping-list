@@ -1,15 +1,29 @@
+html {
+  background-color: rgba(20, 20, 30, 1);
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: rgba(245, 245, 245, 0.9);
+  display: grid;
+}
+
 h1 {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
-.title {
-  text-align: center;
+ul {
+  border-bottom: .05rem solid rgba(255, 255, 255, 1);
 }
 
-.percent {
-  text-align: center;
+ li {
+  border: .05rem solid rgba(255, 255, 255, 1);
+  border-radius: 5px 5px 0px 0px;
+  display: inline;
+  list-style-type: none;
+  padding: 0rem .5rem 0rem .5rem;
+  margin-right: .5rem;
 }
-
-.percentScale {
-  background: linear-gradient(to right, #00FF00, #7FFF00, #FFFF00, #FFFF00, #FF0000);
-}
+/*
+li {
+  border: solid 1px red;
+} */
